@@ -26,13 +26,15 @@ export default function setSplitText() {
       para.split?.revert();
     }
 
-    para.split = new SplitText(para, {
-      type: "lines,words",
-      linesClass: "split-line",
-    });
+   const paraSplit = new SplitText(para, {
+  type: "lines,words",
+  linesClass: "split-line",
+});
 
-    para.anim = gsap.fromTo(
-      para.split.words,
+para.split = paraSplit;
+
+para.anim = gsap.fromTo(
+  paraSplit.words,
       { autoAlpha: 0, y: 80 },
       {
         autoAlpha: 1,
@@ -53,12 +55,15 @@ export default function setSplitText() {
       title.anim.progress(1).kill();
       title.split?.revert();
     }
-    title.split = new SplitText(title, {
-      type: "chars,lines",
-      linesClass: "split-line",
-    });
-    title.anim = gsap.fromTo(
-      title.split.chars,
+    const titleSplit = new SplitText(title, {
+  type: "chars,lines",
+  linesClass: "split-line",
+});
+
+title.split = titleSplit;
+
+title.anim = gsap.fromTo(
+  titleSplit.chars,
       { autoAlpha: 0, y: 80, rotate: 10 },
       {
         autoAlpha: 1,
